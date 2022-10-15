@@ -26,17 +26,22 @@ const LoginPage = () => {
     if (!email.includes("@")) {
       alert("이메일 형식을 확인해주세요");
     }
-    if (!password.length < 8) {
-      alert("비밀번호는 8자 이상 입력해주세요");
-    }
+    // if (!password.length < 8) {
+    //   alert("비밀번호는 8자 이상 입력해주세요");
+    // }
     try {
-      const response = await instance.post("/auth/signin", {
-        email: email,
-        password: password,
-      });
-      localStorage.setItem("access_token", response.headers["access_token"]);
+      const response = await axios.post(
+        "https://pre-onboarding-selection-task.shop/auth/signin",
+        {
+          email: email,
+          password: password,
+        }
+      );
+      console.log(response.data.access_token);
+      localStorage.setItem("access_token", response.data.access_token);
+      alert("로그인완료!");
       setSubmitted(true);
-      //   navigate("/post");
+      navigate("/");
     } catch (error) {
       alert("아이디와 비밀번호를 확인해주세요.");
 
