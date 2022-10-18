@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { instance } from "../api/request";
 
 const Todopost = ({ inputHandler, todo, onSubmitHandler }) => {
   return (

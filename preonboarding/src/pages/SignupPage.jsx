@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import axios from "axios";
-import { instance, onSignUp } from "../api/request";
+import { onSignUp } from "../api/request";
 
 const SignupPage = () => {
   const navigate = useNavigate();

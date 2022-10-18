@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import {
-  addTodo,
-  deleteTodo,
-  getTodo,
-  instance,
-  instanceGet,
-  updateTodo,
-} from "../api/request";
+import { addTodo, deleteTodo, getTodo, updateTodo } from "../api/request";
 import Todo from "../components/Todo";
 import Todopost from "../components/Todopost";
 import useInput from "../hooks/useInput";

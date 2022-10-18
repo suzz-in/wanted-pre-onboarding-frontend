@@ -1,4 +1,3 @@
-import { faL } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import useInput from "../hooks/useInput";
