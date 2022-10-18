@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { instance } from "../api/request";
 import styled from "styled-components";
+import axios from "axios";
+import { instance, onSignUp } from "../api/request";
 
 const SignupPage = () => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
-    //보내줄때는 member,nickname,password 로 보내주자
     email: "",
     password: "",
   });
@@ -18,22 +17,24 @@ const SignupPage = () => {
     const { value, name } = e.target;
     setInputs({ ...inputs, [name]: value });
   };
-  console.log(inputs.password);
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    let pwReg = "^{8,}$";
+    const data = {
+      email: inputs.email,
+      password: inputs.password,
+    };
     if (!email.includes("@")) {
       alert("이메일 형식을 확인해주세요");
     }
-    if (Array.from(password).length < 8) {
+    if ([...password].length < 8) {
       alert("비밀번호는 8자 이상 입력해주세요");
     } else {
-      await instance.post("/auth/signup", {
-        email: inputs.email,
-        password: inputs.password,
-      });
+      console.log(data);
+      // await instance.post("/auth/signup", data);
+      await onSignUp(data);
       alert("회원가입 완료!");
-      navigate("/login");
+      navigate("/");
     }
   };
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { instance } from "../api/request";
+import { API, instance, onLogin } from "../api/request";
 import styled from "styled-components";
 
 const LoginPage = () => {
@@ -20,28 +20,28 @@ const LoginPage = () => {
 
   const sendRequestLogin = async (e) => {
     e.preventDefault();
+    const data = {
+      email: email,
+      password: password,
+    };
+    console.log("data", data);
     if (email === "" || password === "") {
       alert("이메일과 비밀번호를 정확히 입력해주세요");
     }
     if (!email.includes("@")) {
       alert("이메일 형식을 확인해주세요");
     }
-    // if (!password.length < 8) {
-    //   alert("비밀번호는 8자 이상 입력해주세요");
-    // }
+    if (![...password].length) {
+      alert("비밀번호는 8자 이상 입력해주세요");
+    }
     try {
-      const response = await axios.post(
-        "https://pre-onboarding-selection-task.shop/auth/signin",
-        {
-          email: email,
-          password: password,
-        }
-      );
-      console.log(response.data.access_token);
+      const response = await onLogin(data);
+      // const response = await instance.post("/auth/signin", data);
+      console.log("response", response);
       localStorage.setItem("access_token", response.data.access_token);
       alert("로그인완료!");
       setSubmitted(true);
-      navigate("/");
+      navigate("/todo");
     } catch (error) {
       alert("아이디와 비밀번호를 확인해주세요.");
 
@@ -49,9 +49,9 @@ const LoginPage = () => {
     }
   };
   useEffect(() => {
-    console.log("token", localStorage.getItem("access-token"));
-    if (localStorage.getItem("access-token") !== null) {
-      navigate("/post");
+    console.log("token", localStorage.getItem("access_token"));
+    if (localStorage.getItem("access_token") !== null) {
+      navigate("/todo");
     }
   }, []);
 
