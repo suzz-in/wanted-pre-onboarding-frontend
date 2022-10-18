@@ -2,7 +2,6 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import useInput from "../hooks/useInput";
-// import TodoEdit from "./TodoEdit";
 
 function Todo({ todos, delTodo, editTodo }) {
   const { id, todo, isCompleted } = todos;
@@ -33,7 +32,7 @@ function Todo({ todos, delTodo, editTodo }) {
   return (
     <>
       <Todobox>
-        <input
+        <Ckinput
           type="checkbox"
           checked={isCompleted}
           onChange={completed}
@@ -59,21 +58,27 @@ function Todo({ todos, delTodo, editTodo }) {
 export default Todo;
 
 const Todobox = styled.div`
-  width: auto;
+  width: 80%;
+  margin: 1rem auto 0 auto;
   display: flex;
-  background-color: pink;
+  background-color: #feffed;
+  border-radius: 20px;
+`;
+const Ckinput = styled.input`
+  margin-left: 2rem;
 `;
 
 const Tododiv = styled.div`
-  /* background-color: green; */
   width: auto;
   height: auto;
-  margin: 1rem 2rem 1rem 2rem;
+  margin: 1rem 1rem 1rem 1rem;
   text-align: center;
 `;
 
 const Button = styled.button`
-  width: 12vw;
-  height: 3vh;
+  width: 6vw;
+  height: 4vh;
   margin-top: 1rem;
+  border: 0;
+  border-radius: 6px;
 `;

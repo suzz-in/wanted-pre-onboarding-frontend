@@ -4,19 +4,23 @@ import { instance } from "../api/request";
 
 const Todopost = ({ inputHandler, todo, onSubmitHandler }) => {
   return (
-    <>
+    <InputDiv>
       <TodoInput value={todo} onChange={inputHandler} required />
       <SubmitBtn type="submit" onClick={onSubmitHandler}>
         추가
       </SubmitBtn>
-    </>
+    </InputDiv>
   );
 };
 
 export default Todopost;
 
+const InputDiv = styled.div`
+  display: flex;
+  margin: 1rem 3rem 1rem 6rem;
+`;
+
 const TodoInput = styled.input`
-  margin: 3rem 1rem 1rem 2rem;
   width: 40vw;
   height: 10vh;
 `;
@@ -26,5 +30,5 @@ const SubmitBtn = styled.button`
   border-radius: 10px;
   height: 10vh;
   width:10vw
-  margin-left: 1rem;
+  margin-left: 2rem;
 `;

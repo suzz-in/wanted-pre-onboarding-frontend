@@ -10,7 +10,6 @@ import {
   updateTodo,
 } from "../api/request";
 import Todo from "../components/Todo";
-import Todolist from "../components/Todolist";
 import Todopost from "../components/Todopost";
 import useInput from "../hooks/useInput";
 
@@ -63,23 +62,23 @@ const TodoPage = () => {
   // };
 
   //리다이렉트
-  // const memberChk = () => {
-  //   if (localStorage.getItem("access_token")) {
-  //     getTodo();
-  //     return;
-  //   }
-  //   navigate("/");
-  // };
+  const memberChk = () => {
+    if (localStorage.getItem("access_token")) {
+      getTodo();
+      return;
+    }
+    navigate("/");
+  };
 
-  // useEffect(() => {
-  //   memberChk();
-  // }, [navigate]);
+  useEffect(() => {
+    memberChk();
+  }, [navigate]);
 
   return (
     <TodoContainer>
-      <h3>TODO</h3>
-      {/* <input onChange={inputHandler} />
-      <button onClick={() => onSubmitHandler()} /> */}
+      <h3 style={{ margin: "10px auto 10px auto", textAlign: "center" }}>
+        TODO
+      </h3>
       <Todopost
         onSubmitHandler={onSubmitHandler}
         inputHandler={inputHandler}
@@ -103,9 +102,9 @@ const TodoPage = () => {
 export default TodoPage;
 
 const TodoContainer = styled.div`
-  background-color: green;
-  width: 70%;
-  .h3 {
-    text-align: center;
-  }
+  background-color: skyblue;
+  width: 500px;
+  height: 800px;
+  margin: auto;
+  border-radius: 20px;
 `;
