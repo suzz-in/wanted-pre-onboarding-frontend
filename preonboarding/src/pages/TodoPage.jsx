@@ -51,15 +51,6 @@ const TodoPage = () => {
       )
     );
   };
-  // 투두 완료했는지
-  // const onToggle = async (id, todo, isCompleted) => {
-  //   await updateTodo(id, todo, isCompleted);
-  //   setTodoList(
-  //     todolist.map((todo) =>
-  //       todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-  //     )
-  //   );
-  // };
 
   //리다이렉트
   const memberChk = () => {
