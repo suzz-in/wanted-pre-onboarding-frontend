@@ -11,7 +11,6 @@ const Todopost = ({ inputHandler, todo, onSubmitHandler }) => {
     </InputDiv>
   );
 };
-
 export default Todopost;
 
 const InputDiv = styled.div`
